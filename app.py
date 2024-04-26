@@ -8,7 +8,6 @@ from promptHistory import PromptHistory
 with open("hue.txt") as file:
     hue_prompt = file.read()
 
-
 load_dotenv(find_dotenv())
 
 client = OpenAI(
@@ -16,7 +15,6 @@ client = OpenAI(
 )
 
 model = "gpt-3.5-turbo"
-temp = 0.3
 
 app = FastAPI()
 
@@ -30,7 +28,7 @@ async def gen(prompt_history: PromptHistory):
     try:
         completion = client.chat.completions.create(
             model=model,
-            temperature=temp,
+            temperature=0.3,
             messages=[{"role": item.role, "content": item.content} for item in prompt_history.prompt_history]
         )
         return {"prompt": completion.choices[0].message.content}
