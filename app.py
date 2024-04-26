@@ -4,8 +4,6 @@ from dotenv import load_dotenv, find_dotenv
 from fastapi import FastAPI, HTTPException
 from prompt import Prompt
 from promptHistory import PromptHistory
-from starlette.middleware.base import BaseHTTPMiddleware
-
 
 with open("hue.txt") as file:
     hue_prompt = file.read()
@@ -21,22 +19,8 @@ model = "gpt-3.5-turbo"
 app = FastAPI()
 
 
-class NoCORSMiddleware(BaseHTTPMiddleware):
-    async def dispatch(self, request, call_next):
-        response = await call_next(request)
-        # Remove CORS headers
-        response.headers.pop("access-control-allow-origin", None)
-        response.headers.pop("access-control-allow-methods", None)
-        response.headers.pop("access-control-allow-headers", None)
-        return response
-
-
-app.add_middleware(NoCORSMiddleware)
-
-
 @app.post("/gen/")
 async def gen(prompt_history: PromptHistory):
-
     if not prompt_history:
         raise HTTPException(status_code=400, detail="Input list cannot be empty")
 
