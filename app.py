@@ -2,7 +2,13 @@ import os
 from openai import OpenAI
 from dotenv import load_dotenv, find_dotenv
 from fastapi import FastAPI, HTTPException
+from prompt import Prompt
 from promptHistory import PromptHistory
+
+with open("hue.txt") as file:
+    hue_prompt = file.read()
+
+
 load_dotenv(find_dotenv())
 
 client = OpenAI(
@@ -16,7 +22,7 @@ app = FastAPI()
 
 
 @app.post("/gen/")
-async def process_list(prompt_history: PromptHistory):
+async def gen(prompt_history: PromptHistory):
 
     if not prompt_history:
         raise HTTPException(status_code=400, detail="Input list cannot be empty")
@@ -34,5 +40,19 @@ async def process_list(prompt_history: PromptHistory):
         raise HTTPException(status_code=500, detail="Internal server error")
 
 
+@app.post("/hue/")
+async def hue(prompt: Prompt):
+    if not prompt:
+        raise HTTPException(status_code=400, detail="prompt cannot be empty")
 
-
+    try:
+        completion = client.chat.completions.create(
+            model=model,
+            temperature=0.7,
+            messages=[{"role": "system", "content": hue_prompt}, {"role": prompt.role, "content": prompt.content}]
+        )
+        return {"prompt": completion.choices[0].message.content}
+    except Exception as e:
+        # Handle potential errors during API call
+        print(f"Error during completion: {e}")
+        raise HTTPException(status_code=500, detail="Internal server error")
