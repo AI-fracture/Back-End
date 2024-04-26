@@ -4,6 +4,7 @@ from dotenv import load_dotenv, find_dotenv
 from fastapi import FastAPI, HTTPException
 from prompt import Prompt
 from promptHistory import PromptHistory
+from fastapi.middleware.cors import CORSMiddleware
 
 with open("hue.txt") as file:
     hue_prompt = file.read()
@@ -17,6 +18,16 @@ client = OpenAI(
 model = "gpt-3.5-turbo"
 
 app = FastAPI()
+
+origins = ["*"]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 @app.post("/gen/")
