@@ -22,7 +22,7 @@ client = OpenAI(
     api_key=os.environ.get("OPENAI_API_KEY")
 )
 
-model = "gpt-3.5-turbo"
+model = "gpt-4-turbo"
 
 app = FastAPI()
 
