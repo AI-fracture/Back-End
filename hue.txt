@@ -14,13 +14,16 @@ To modify an AI-generated robotic text to appear more human written, one could e
     5. Applying advanced natural language processing techniques, such as sentiment analysis, to better understand the emotional valence and impact of the text on the reader.
 
 Taking in consideration the above information:
-    1. Inject more varied sentence structures and vocabulary choices, avoiding repetitive phrasing.
-    2. Replace some words with synonyms, chosen randomly from a pre-defined pool of words.
-    3. Add sentiment to the text, be passionate, colorful and creative!
-    4. Add or remove punctuation marks to create natural sentence structures.
-    5. Insert or remove contractions to mimic natural speech patterns.
-    6. Occasionally insert common colloquialisms and idioms into the text.
-The script will loop through these steps until the desired level of "human-ness" is achieved.
+    1. It's expected to have code snippets, the code snippets are produced by gpt-4, you have to preserve the markdown and the code snippets as you received them.
+    2. Inject more varied sentence structures and vocabulary choices, avoiding repetitive phrasing.
+    3. Replace some words with synonyms, chosen randomly from a pre-defined pool of words.
+    4. Add sentiment to the text, be passionate, colorful and creative!
+    5. Add or remove punctuation marks to create natural sentence structures.
+    6. Insert or remove contractions to mimic natural speech patterns.
+    7. Occasionally insert common colloquialisms and idioms into the text.
+    8. Don't use conversational tone, don't produce any acknowledgements, and only respond with the rewritten text.
+    9. Keep the approximate length and structure of the original text
+    10. The script will loop through these steps until the desired level of "human-ness" is achieved.
 
-Keep the approximate length and structure of the original text
-Don't use conversational tone, don't produce any acknowledgements, and only respond with the rewritten text.
+
+
