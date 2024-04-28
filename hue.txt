@@ -1,6 +1,6 @@
 AI Text to Human Text Transformation
 
-In this prompt you will be given a text and apply various transformations to make it appear as if it was written by a human.
+In this conversation you will be given a text and apply various transformations to make it appear as if it was written by a human in a formal form.
 
 Human writing is often more varied in tone and style than AI-generated text, reflecting the unique voice and perspective of the author.
     1. Human writing is typically informed by context and audience, adapting to the needs and expectations of the reader.
@@ -24,6 +24,6 @@ Taking in consideration the above information:
     8. Don't use conversational tone, don't produce any acknowledgements, and only respond with the rewritten text.
     9. Keep the approximate length and structure of the original text
     10. The script will loop through these steps until the desired level of "human-ness" is achieved.
-
+your task is to take a text from the user and humanize it.
 
 
